@@ -1,0 +1,13 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  // Code spellcheck to ignore project-specific words
+  "cSpell.words": ["mkit", "notionhq", "storypoints"],
+
+  // TypeScript VSCode configuration
+  "typescript.referencesCodeLens.enabled": true,
+
+  // Fix all auto-fixable issues reported by ESLint
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
