@@ -5,7 +5,7 @@ import { CreateTaskParams, Task } from '../../interfaces/tasks';
 import { DropdownValues } from '../../interfaces/notionValues';
 import {
   mapNotionPageToTask,
-  mapNotionPropertiesToDropdownValues,
+  mapNotionPropertiesToSlackViewValues,
   getIncompleteTasksByUserFilters,
   getNotionCreateTaskPageParams
 } from './utils';
@@ -42,12 +42,12 @@ export const createTask = async (createTaskParams: CreateTaskParams): Promise<Ta
 };
 
 // TODO: maybe rename this function
-export const getValues = async (): Promise<DropdownValues> => {
+export const getSlackCreateTaskViewValues = async (): Promise<DropdownValues> => {
   const { properties } = await notion.databases.retrieve({
     database_id: process.env.NOTION_DATABASE_ID
   });
 
   // TODO: refactor mapNotionPropertiesToDropdownValues()
-  const notionValues = mapNotionPropertiesToDropdownValues(properties);
+  const notionValues = mapNotionPropertiesToSlackViewValues(properties);
   return notionValues;
 };

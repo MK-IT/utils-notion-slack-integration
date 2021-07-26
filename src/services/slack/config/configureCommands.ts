@@ -7,7 +7,7 @@ const configureCommands = async (client: App) => {
   client.command('/notion', async ({ ack, payload }) => {
     ack();
 
-    const dropdownValues = await Notion.getValues();
+    const dropdownValues = await Notion.getSlackCreateTaskViewValues();
     // opens add task modal
     await client.client.views.open({
       trigger_id: payload.trigger_id,
