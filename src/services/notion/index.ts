@@ -1,8 +1,6 @@
 import { Client as NotionApp } from '@notionhq/client';
 import {
-  CompoundFilter,
   Page,
-  PeopleFilter,
   PersonUser,
   User
 } from '@notionhq/client/build/src/api-types';
@@ -10,6 +8,7 @@ import {
 import { CreateTaskParams, Task } from '../../interfaces/tasks';
 import { DropdownValues } from '../../interfaces/notionValues';
 import { mapNotionPageToTask, mapNotionPropertiesToDropdownValues } from './utils';
+import getIncompleteTasksByUserFilters from './utils/filters';
 
 const notion = new NotionApp({ auth: process.env.NOTION_API_TOKEN });
 
@@ -21,46 +20,14 @@ export const getUserByEmail = async (email: string) => {
 };
 
 export const getIncompleteTasksByUserId = async (user: User): Promise<Task[]> => {
-  // TODO: extract property names and hard coded values
-  const filterByUserId: PeopleFilter = {
-    property: 'Accountable',
-    people: {
-      contains: user.id
-    }
-  };
-
-  const filterByStatusNotStarted: CompoundFilter = {
-    and: [
-      filterByUserId,
-      {
-        property: 'Status',
-        select: {
-          equals: 'Not Started'
-        }
-      }
-    ]
-  };
-
-  const filterByStatusInProgress: CompoundFilter = {
-    and: [
-      filterByUserId,
-      {
-        property: 'Status',
-        select: {
-          equals: 'In Progress'
-        }
-      }
-    ]
-  };
-
+  const filters = getIncompleteTasksByUserFilters(user.id);
   const { results } = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
     filter: {
-      or: [filterByStatusNotStarted, filterByStatusInProgress]
+      or: [...filters]
     }
   });
 
-  // TODO: refactor mapNotionPageToTask()
   const tasks = results.map(page => mapNotionPageToTask(page));
 
   return tasks;

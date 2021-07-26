@@ -1,5 +1,5 @@
 import { CompoundFilter, Filter, PeopleFilter } from "@notionhq/client/build/src/api-types";
-import { NOT_STARTED_STATUS_TEXT, IN_PROGRESS_STATUS_TEXT } from "src/utils/constants";
+import { NOT_STARTED_STATUS_TEXT, IN_PROGRESS_STATUS_TEXT } from "../../../utils/constants";
 
 
 const incompleteStatuses = [NOT_STARTED_STATUS_TEXT, IN_PROGRESS_STATUS_TEXT];
