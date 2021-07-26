@@ -10,17 +10,25 @@
     "mkit"
   ],
   "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "tsc": "tsc",
     "start": "tsc && nodemon ./dist/index.js"
   },
   "dependencies": {
     "@notionhq/client": "^0.2.3",
     "@slack/bolt": "^3.5.0",
-    "dotenv": "^10.0.0",
-    "redis": "^3.1.2"
+    "dotenv": "^10.0.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.0",
     "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
     "typescript": "^4.3.5"
   },
   "author": "MK IT Ltd. <hi@mkit.io>",
