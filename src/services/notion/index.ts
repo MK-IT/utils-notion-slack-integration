@@ -5,7 +5,7 @@ import { CreateTaskParams, Task } from '../../interfaces/tasks';
 import { DropdownValues } from '../../interfaces/notionValues';
 import { mapNotionPageToTask, mapNotionPropertiesToDropdownValues } from './utils';
 
-const notion = new NotionApp({ auth: process.env.NOTION_API_KEY });
+const notion = new NotionApp({ auth: process.env.NOTION_API_TOKEN });
 
 export const getUserByEmail = async (email: string) => {
   // TODO: notion.users.list() return a paginated response; there's a chance the user is not among the returned and we should "scroll" further
