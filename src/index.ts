@@ -1,13 +1,13 @@
 /* eslint-disable import/first */
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
 dotenv.config();
-import * as Notion from './services/notion'
+// import * as Notion from './services/notion';
 
- (async () => {
+(async () => {
   // FIXME: comment out and `yarn start` to create a sample task in Notion
   // await Slack.start();
-// const values = await Notion.getValues();
+  // const values = await Notion.getValues();
   // console.log(values);
   // const user = await Notion.getUserByEmail('martin.angelov@mkit.io');
   // const tasks = await Notion.getIncompleteTasksByUserId(user);
@@ -30,4 +30,4 @@ import * as Notion from './services/notion'
   //   type: '3f806034-9c48-4519-871e-60c9c32d73d8'
   // };
   // const createdTask = await Notion.createTask(params);
- })();
+})();
