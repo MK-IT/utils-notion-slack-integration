@@ -35,21 +35,19 @@ export const getIncompleteTasksByUserId = async (user: User): Promise<Task[]> =>
 
 export const createTask = async (createTaskParams: CreateTaskParams): Promise<Task> => {
   const params = getNotionCreateTaskPageParams(createTaskParams);
-  const result = await notion.pages.create(params)
+  const result = await notion.pages.create(params);
 
   const task = mapNotionPageToTask(result);
   return task;
 };
 
+// TODO: maybe rename this function
 export const getValues = async (): Promise<DropdownValues> => {
-  const values = await notion.databases.retrieve({
+  const { properties } = await notion.databases.retrieve({
     database_id: process.env.NOTION_DATABASE_ID
   });
 
-  // FIXME: any type
-  const props = values.properties as any;
-
   // TODO: refactor mapNotionPropertiesToDropdownValues()
-  const notionValues = mapNotionPropertiesToDropdownValues(props);
+  const notionValues = mapNotionPropertiesToDropdownValues(properties);
   return notionValues;
 };
