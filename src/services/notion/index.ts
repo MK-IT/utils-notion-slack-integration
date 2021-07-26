@@ -1,5 +1,11 @@
 import { Client as NotionApp } from '@notionhq/client';
-import { Page, PeopleFilter, PersonUser, SelectFilter, User } from '@notionhq/client/build/src/api-types';
+import {
+  CompoundFilter,
+  Page,
+  PeopleFilter,
+  PersonUser,
+  User
+} from '@notionhq/client/build/src/api-types';
 
 import { CreateTaskParams, Task } from '../../interfaces/tasks';
 import { DropdownValues } from '../../interfaces/notionValues';
@@ -23,24 +29,33 @@ export const getIncompleteTasksByUserId = async (user: User): Promise<Task[]> =>
     }
   };
 
-  const filterByStatusNotStarted: SelectFilter = {
-    property: 'Status',
-    select: {
-      equals: 'Not Started'
-    }
+  const filterByStatusNotStarted: CompoundFilter = {
+    and: [
+      filterByUserId,
+      {
+        property: 'Status',
+        select: {
+          equals: 'Not Started'
+        }
+      }
+    ]
   };
 
-  const filterByStatusInProgress: SelectFilter = {
-    property: 'Status',
-    select: {
-      equals: 'In Progress'
-    }
+  const filterByStatusInProgress: CompoundFilter = {
+    and: [
+      filterByUserId,
+      {
+        property: 'Status',
+        select: {
+          equals: 'In Progress'
+        }
+      }
+    ]
   };
 
   const { results } = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
     filter: {
-      and: [filterByUserId],
       or: [filterByStatusNotStarted, filterByStatusInProgress]
     }
   });
