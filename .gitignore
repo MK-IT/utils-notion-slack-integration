@@ -1,0 +1,23 @@
+# Packages
+node_modules
+*.log
+
+# Output
+lib
+dist
+public
+.cache
+
+# Secrets
+.env
+
+# Tests
+coverage
+
+# Editors
+.idea
+.vscode
+
+# Misc
+.DS_Store
+TODO.md
