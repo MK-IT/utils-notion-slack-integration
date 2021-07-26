@@ -1,0 +1,35 @@
+{
+  "name": "utils-notion-slack-integration",
+  "version": "0.0.1",
+  "description": "Utility to integrate Notion task management with Slack",
+  "keywords": [
+    "notion",
+    "slack",
+    "task management",
+    "integration",
+    "mkit"
+  ],
+  "scripts": {
+    "tsc": "tsc",
+    "start": "tsc && nodemon ./dist/index.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^0.2.3",
+    "@slack/bolt": "^3.5.0",
+    "dotenv": "^10.0.0",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "author": "MK IT Ltd. <hi@mkit.io>",
+  "homepage": "https://github.com/MK-IT/utils-notion-slack-integration",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MK-IT/utils-notion-slack-integration.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MK-IT/utils-notion-slack-integration/issues"
+  },
+  "license": "MIT"
+}
