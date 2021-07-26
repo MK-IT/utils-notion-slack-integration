@@ -1,10 +1,11 @@
-import { CompoundFilter, Filter, PeopleFilter } from "@notionhq/client/build/src/api-types";
-import { NOT_STARTED_STATUS_TEXT, IN_PROGRESS_STATUS_TEXT } from "../../../utils/constants";
-
+import { CompoundFilter, Filter, PeopleFilter } from '@notionhq/client/build/src/api-types';
+import { NOT_STARTED_STATUS_TEXT, IN_PROGRESS_STATUS_TEXT } from '../../../utils/constants';
 
 const incompleteStatuses = [NOT_STARTED_STATUS_TEXT, IN_PROGRESS_STATUS_TEXT];
 
-const getIncompleteTasksByUserFilters = (userId: string): Filter[] => {
+// TODO: add rule to prefer named imports
+// eslint-disable-next-line import/prefer-default-export
+export const getIncompleteTasksByUserFilters = (userId: string): Filter[] => {
   const filterByUserId: PeopleFilter = {
     property: 'Accountable',
     people: {
@@ -26,9 +27,7 @@ const getIncompleteTasksByUserFilters = (userId: string): Filter[] => {
     };
 
     return filter;
-  })
+  });
 
-  return filters
-}
-
-export default getIncompleteTasksByUserFilters;
+  return filters;
+};

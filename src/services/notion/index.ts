@@ -1,14 +1,13 @@
 import { Client as NotionApp } from '@notionhq/client';
-import {
-  Page,
-  PersonUser,
-  User
-} from '@notionhq/client/build/src/api-types';
+import { Page, PersonUser, User } from '@notionhq/client/build/src/api-types';
 
 import { CreateTaskParams, Task } from '../../interfaces/tasks';
 import { DropdownValues } from '../../interfaces/notionValues';
-import { mapNotionPageToTask, mapNotionPropertiesToDropdownValues } from './utils';
-import getIncompleteTasksByUserFilters from './utils/filters';
+import {
+  mapNotionPageToTask,
+  mapNotionPropertiesToDropdownValues,
+  getIncompleteTasksByUserFilters
+} from './utils';
 
 const notion = new NotionApp({ auth: process.env.NOTION_API_TOKEN });
 
