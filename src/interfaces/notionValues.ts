@@ -3,15 +3,15 @@ export interface InnerValue {
   id: string;
 }
 
-export interface dropdownValue {
+export interface DropdownValue {
   values: InnerValue[];
   defaultValue: InnerValue;
 }
 
 export interface DropdownValues {
-  status: dropdownValue;
-  estimate: dropdownValue;
-  type: dropdownValue;
-  priority: dropdownValue;
+  status: DropdownValue;
+  estimate: DropdownValue;
+  type: DropdownValue;
+  priority: DropdownValue;
   // sprints?: dropdownValue
 }

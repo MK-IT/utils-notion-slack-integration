@@ -1,12 +1,14 @@
-import { config } from 'dotenv';
-import { CreateTaskParams } from './interfaces/tasks';
-config();
-import * as Notion from './services/notion';
-import * as Slack from './services/slack';
+/* eslint-disable import/first */
+import dotenv from 'dotenv';
+
+dotenv.config();
+// import * as Notion from './services/notion';
+
 (async () => {
   // FIXME: comment out and `yarn start` to create a sample task in Notion
   // await Slack.start();
   // const values = await Notion.getValues();
+  // console.log(values);
   // const user = await Notion.getUserByEmail('martin.angelov@mkit.io');
   // const tasks = await Notion.getIncompleteTasksByUserId(user);
   // const params: CreateTaskParams = {

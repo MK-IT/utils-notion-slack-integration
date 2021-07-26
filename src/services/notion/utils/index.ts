@@ -10,11 +10,12 @@ export const mapNotionPageToTask = ({
   url: string;
   properties: PropertyValueMap;
 }): Task => {
+  // FIXME: any type
   const props = properties as any;
   const task: Task = {
-    name: props["Projects"].title[0]?.text?.content,
-    url: url,
-    dueDate: props["Timeline"]?.date?.end,
+    name: props.projects.title[0]?.text?.content,
+    url,
+    dueDate: props.timeline?.date?.end,
   };
   return task;
 };
@@ -36,7 +37,7 @@ export const mapNotionPropertiesToDropdownValues = (
     // story points have whitespace
     const dropdownName = column.split(" ").join("").toLowerCase();
 
-    let defaultValue = dropdownValues.find(
+    const defaultValue = dropdownValues.find(
       (p) =>
         p.id === process.env[`NOTION_DEFAULT_${dropdownName.toUpperCase()}_ID`]
     );

@@ -1,16 +1,16 @@
 import { Client as NotionApp } from '@notionhq/client';
-import { Page, PeopleFilter, SelectFilter, User } from '@notionhq/client/build/src/api-types';
+import { Page, PeopleFilter, PersonUser, SelectFilter, User } from '@notionhq/client/build/src/api-types';
 
 import { CreateTaskParams, Task } from '../../interfaces/tasks';
 import { DropdownValues } from '../../interfaces/notionValues';
 import { mapNotionPageToTask, mapNotionPropertiesToDropdownValues } from './utils';
 
-const notion = new NotionApp({ auth: process.env.NOTION_API_KEY });
+const notion = new NotionApp({ auth: process.env.NOTION_API_TOKEN });
 
 export const getUserByEmail = async (email: string) => {
   // TODO: notion.users.list() return a paginated response; there's a chance the user is not among the returned and we should "scroll" further
   const users = (await notion.users.list()).results;
-  const user = users.find((user: any) => user.person.email === email);
+  const user = users.find((u: PersonUser) => u.person.email === email);
   return user;
 };
 
@@ -109,7 +109,6 @@ export const createTask = async ({
           id: status
         }
       },
-      // Story points has space in Notion
       Estimate: {
         type: 'select',
         select: {

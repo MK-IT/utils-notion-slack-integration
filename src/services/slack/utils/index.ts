@@ -1,62 +1,53 @@
-import {
-  DividerBlock,
-  InputBlock,
-  KnownBlock,
-  Option,
-  Action,
-} from "@slack/bolt";
-import { dropdownValue, InnerValue } from "src/interfaces/notionValues";
+import { DividerBlock, InputBlock, KnownBlock, Option } from '@slack/bolt';
+import { DropdownValue, InnerValue } from 'src/interfaces/notionValues';
 
 export enum SelectType {
-  SingleSelect = "static_select",
-  MultiSelect = "multi_static_select",
+  SingleSelect = 'static_select',
+  MultiSelect = 'multi_static_select'
 }
-const mapDropdownValuesToBlockOptions = (values: InnerValue[]): Option[] => {
-  return values.map((value) => {
-    return {
-      text: {
-        type: "plain_text",
-        text: value.text,
-        emoji: true,
-      },
-      value: value.id,
-    };
-  });
-};
+const mapDropdownValuesToBlockOptions = (values: InnerValue[]): Option[] =>
+  values.map(value => ({
+    text: {
+      type: 'plain_text',
+      text: value.text,
+      emoji: true
+    },
+    value: value.id
+  }));
 
 export const generateSelectBlock = (
   label: string,
   placeholder: string,
-  dropdownValue: dropdownValue,
+  dropdownValue: DropdownValue,
   type: SelectType = SelectType.SingleSelect
 ): KnownBlock => {
-  const id = label.split(" ").join(" ").toLowerCase();
+  const id = label.split(' ').join(' ').toLowerCase();
   return {
-    type: "input",
+    type: 'input',
     element: {
       type: type as any,
       placeholder: {
-        type: "plain_text",
+        type: 'plain_text',
         text: placeholder,
-        emoji: true,
+        emoji: true
       },
       options: mapDropdownValuesToBlockOptions(dropdownValue.values),
       action_id: id,
       initial_option: {
         text: {
-          type: "plain_text",
+          type: 'plain_text',
           text: dropdownValue.defaultValue.text,
-          emoji: true,
+          emoji: true
         },
-        value: dropdownValue.defaultValue.id,
-      },
+        value: dropdownValue.defaultValue.id
+      }
     },
     block_id: id,
     label: {
-      type: "plain_text",
+      type: 'plain_text',
       text: label,
-      emoji: true,
-    },
+      emoji: true
+    }
   };
 };
 
@@ -67,22 +58,22 @@ export const generateUserSelectBlock = (
 ): KnownBlock => {
   const id = label.toLowerCase();
   return {
-    type: "section",
+    type: 'section',
     text: {
-      type: "mrkdwn",
-      text: label,
+      type: 'mrkdwn',
+      text: label
     },
     accessory: {
-      type: "users_select",
+      type: 'users_select',
       placeholder: {
-        type: "plain_text",
+        type: 'plain_text',
         text: placeholder,
-        emoji: true,
+        emoji: true
       },
       initial_user: initialUserId,
-      action_id: id,
+      action_id: id
     },
-    block_id: id,
+    block_id: id
   };
 };
 
@@ -94,29 +85,27 @@ export const generateInputBlock = (
 ): InputBlock => {
   const id = label.toLowerCase();
   return {
-    type: "input",
+    type: 'input',
     element: {
-      type: "plain_text_input",
+      type: 'plain_text_input',
       multiline,
       placeholder: {
-        type: "plain_text",
+        type: 'plain_text',
         text: placeholder,
-        emoji: true,
+        emoji: true
       },
-      action_id: id,
+      action_id: id
     },
     optional,
     label: {
-      type: "plain_text",
+      type: 'plain_text',
       text: label,
-      emoji: true,
+      emoji: true
     },
-    block_id: id,
+    block_id: id
   };
 };
 
-export const generateDividerBlock = (): DividerBlock => {
-  return {
-    type: "divider",
-  };
-};
+export const generateDividerBlock = (): DividerBlock => ({
+  type: 'divider'
+});
