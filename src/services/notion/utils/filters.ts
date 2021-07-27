@@ -5,7 +5,7 @@ import {
   DATABASE_PROPERTY_ACCOUNTABLE,
   STATUS_NOT_STARTED,
   STATUS_IN_PROGRESS
-} from '../../../utils/constants';
+} from '@utils/constants';
 
 const incompleteStatuses = [STATUS_NOT_STARTED, STATUS_IN_PROGRESS];
 

@@ -4,9 +4,9 @@ import {
   DATABASE_PROPERTY_SPRINT,
   DATABASE_PROPERTY_STATUS,
   DATABASE_PROPERTY_TYPE
-} from '../../../utils/constants';
-import { DropdownValues, InnerValue } from '../../../interfaces/notionValues';
-import { Task } from '../../../interfaces/tasks';
+} from '@utils/constants';
+import { DropdownValues, InnerValue } from '@interfaces/notionValues';
+import { Task } from '@interfaces/tasks';
 
 // TODO: fix any type
 export const mapNotionPageToTask = (page: any): Task => {
