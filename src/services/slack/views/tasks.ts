@@ -7,7 +7,7 @@ import {
   generateUserSelectBlock,
 } from '../utils';
 
-const tasks = {
+export const tasks = {
   createTask: (dropDownValues: DropdownValues, initialUserId: string): View => {
     // FIXME: this should be an util function
     const blocks: KnownBlock[] = [
@@ -50,4 +50,3 @@ const tasks = {
     };
   }
 };
-export default tasks;
