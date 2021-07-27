@@ -4,6 +4,11 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json'
   },
+  overrides: {
+    rules: {
+      'import/prefer-default-export': 'off'
+    }
+  },
   plugins: ['@typescript-eslint'],
   extends: ['airbnb-typescript/base', 'prettier']
 };

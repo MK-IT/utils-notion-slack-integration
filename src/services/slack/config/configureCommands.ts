@@ -1,13 +1,13 @@
 import { App } from '@slack/bolt';
-import tasks from '../views/tasks';
+import { tasks } from '../views/tasks';
 import * as Notion from '../../notion';
 
-const configureCommands = async (client: App) => {
+export const configureCommands = async (client: App) => {
   // command to add a task
   client.command('/notion', async ({ ack, payload }) => {
     ack();
 
-    const dropdownValues = await Notion.getValues();
+    const dropdownValues = await Notion.getSlackCreateTaskViewValues();
     // opens add task modal
     await client.client.views.open({
       trigger_id: payload.trigger_id,
@@ -15,5 +15,3 @@ const configureCommands = async (client: App) => {
     });
   });
 };
-
-export default configureCommands;
