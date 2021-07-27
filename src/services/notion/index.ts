@@ -1,8 +1,8 @@
 import { Client as NotionApp } from '@notionhq/client';
 import { PersonUser, User } from '@notionhq/client/build/src/api-types';
 
-import { CreateTaskParams, Task } from '../../interfaces/tasks';
-import { DropdownValues } from '../../interfaces/notionValues';
+import { CreateTaskParams, Task } from '@interfaces/tasks';
+import { DropdownValues } from '@interfaces/notionValues';
 import {
   mapNotionPageToTask,
   mapNotionPropertiesToSlackViewValues,

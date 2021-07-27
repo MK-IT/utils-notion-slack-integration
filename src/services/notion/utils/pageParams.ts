@@ -1,6 +1,6 @@
 import { PagesCreateParameters } from '@notionhq/client/build/src/api-endpoints';
 
-import { CreateTaskParams } from '../../../interfaces/tasks';
+import { CreateTaskParams } from '@interfaces/tasks';
 
 export const getNotionCreateTaskPageParams = ({
   title,
