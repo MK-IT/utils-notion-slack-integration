@@ -14,7 +14,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "tsc": "tsc",
     "start": "nodemon ./src/index.ts",
-    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist"
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@notionhq/client": "^0.2.3",
