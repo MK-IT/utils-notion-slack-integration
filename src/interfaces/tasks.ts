@@ -1,4 +1,4 @@
-import { User } from "@notionhq/client/build/src/api-types";
+import { User } from '@notionhq/client/build/src/api-types';
 
 export interface Task {
   name: string;
