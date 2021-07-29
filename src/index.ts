@@ -1,5 +1,6 @@
 /* eslint-disable import/first */
 import dotenv from 'dotenv';
+
 dotenv.config(); // Note: import statements should come after `dotenv.config()`
 
 // import * as Notion from './services/notion';
