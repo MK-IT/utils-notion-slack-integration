@@ -1,4 +1,5 @@
 import { App, LogLevel } from '@slack/bolt';
+
 import { configureCommands } from './config/configureCommands';
 
 const slack = new App({
