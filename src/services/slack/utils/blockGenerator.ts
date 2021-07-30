@@ -1,7 +1,7 @@
 import { DividerBlock, InputBlock, KnownBlock } from '@slack/bolt';
 
 import { DropdownValue } from 'src/interfaces/notionValues';
-import { getParsedTodayDate } from './date';
+import { formatDate } from './date';
 import { mapDropdownValuesToBlockOptions } from './mappings';
 
 export enum SelectType {
@@ -107,11 +107,13 @@ export const generateDividerBlock = (): DividerBlock => ({
 
 export const generateDatePickerBlock = (label: string, placeholder: string): KnownBlock => {
   const id = label.toLowerCase();
+  const today = new Date();
+  const initialDate = formatDate(today);
   return {
     type: 'input',
     element: {
       type: 'datepicker',
-      initial_date: getParsedTodayDate(),
+      initial_date: initialDate,
       placeholder: {
         type: 'plain_text',
         text: placeholder,

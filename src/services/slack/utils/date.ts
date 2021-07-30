@@ -1,8 +1,5 @@
-export const getParsedTodayDate = () => {
-  const today = new Date();
-  const dayOfMonth = today.getDate();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
-
-  return `${year}-${month}-${dayOfMonth}`;
+// formats a date to yyyy-mm-dd
+export const formatDate = (date : Date) : string => {
+  const formattedDate = new Date().toISOString().slice(0, 10);
+  return formattedDate;
 };
