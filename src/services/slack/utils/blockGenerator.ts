@@ -5,15 +5,15 @@ import { getParsedTodayDate } from './date';
 import { mapDropdownValuesToBlockOptions } from './mappings';
 
 export enum SelectType {
-  SingleSelect = 'static_select',
-  MultiSelect = 'multi_static_select'
+  singleSelect = 'static_select',
+  multiSelect = 'multi_static_select'
 }
 
 export const generateSelectBlock = (
   label: string,
   placeholder: string,
   dropdownValue: DropdownValue,
-  type: SelectType = SelectType.SingleSelect
+  type: SelectType = SelectType.singleSelect
 ): KnownBlock => {
   const id = label.split(' ').join(' ').toLowerCase();
   return {
