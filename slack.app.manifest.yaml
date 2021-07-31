@@ -9,7 +9,7 @@ features:
     always_online: false
   slash_commands:
     - command: /notion
-      url: INSERT YOUR BACKEND URL HERE
+      url: INSERT YOUR BACKEND URL HERE + '/slack/events'
       description: task manager
       usage_hint: new | tasks | help
       should_escape: false
@@ -35,7 +35,7 @@ oauth_config:
 settings:
   interactivity:
     is_enabled: true
-    request_url: INSERT YOUR INTERACTIVITY URL HERE
+    request_url: INSERT YOUR INTERACTIVITY URL HERE + '/slack/events'
   org_deploy_enabled: true
   socket_mode_enabled: false
   token_rotation_enabled: false
