@@ -1,6 +1,8 @@
-import { Option } from '@slack/bolt';
+import { KnownBlock, Option } from '@slack/bolt';
 
 import { InnerValue } from '@interfaces/notionValues';
+import { Task } from '@interfaces/tasks';
+import { sectionBlockUrl } from '../blocks';
 
 export const mapSelectValues = (values: InnerValue[]): Option[] =>
   values.map(value => ({
@@ -11,3 +13,8 @@ export const mapSelectValues = (values: InnerValue[]): Option[] =>
     },
     value: value.id
   }));
+
+export const mapTaskToSectionWithButtonBlocks = (tasks: Task[]): KnownBlock[] => {
+  const blocks = tasks.map(task => sectionBlockUrl(task.name, task.url));
+  return blocks;
+};
