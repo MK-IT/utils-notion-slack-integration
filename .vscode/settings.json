@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   // Code spellcheck to ignore project-specific words
-  "cSpell.words": ["datepicker", "mkit", "notionhq", "storypoints"],
+  "cSpell.words": ["datepicker", "mkit", "mrkdwn", "notionhq", "storypoints"],
 
   // TypeScript VSCode configuration
   "typescript.referencesCodeLens.enabled": true,
