@@ -6,14 +6,10 @@ import {
   SLACK_NEW_TASK_SLASH_COMMAND_ARGUMENT,
   SLACK_UNKNOWN_SLASH_COMMAND_ARGUMENT
 } from '@utils/constants';
-import { triggerCreateTaskCommand, triggerHelpCommand, triggerUnknownCommand } from './commands';
+import { triggerCreateTaskCommand, triggerHelpCommand, triggerTaskListingCommand, triggerUnknownCommand } from './commands';
 
 export const executeCommand = (command: string, payload: SlashCommand, client: App) => {
   executionCommands[command](payload, client);
-};
-
-const triggerTaskListingCommand = () => {
-  console.log('trigger task listing cmd...');
 };
 
 const executionCommands = {
