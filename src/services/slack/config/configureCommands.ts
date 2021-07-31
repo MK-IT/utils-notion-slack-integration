@@ -5,10 +5,8 @@ import { executeCommand } from '../utils/commandExecutor';
 
 export const configureCommands = async (client: App) => {
   client.command('/notion', async ({ ack, payload }) => {
-    ack();
-
     const { text } = payload;
     const command = parseCommand(text);
-    executeCommand(command, payload, client);
+    await executeCommand(command, payload, client, ack);
   });
 };

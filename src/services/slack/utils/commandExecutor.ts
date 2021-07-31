@@ -1,4 +1,4 @@
-import { App, SlashCommand } from '@slack/bolt';
+import { AckFn, App, RespondArguments, SlashCommand } from '@slack/bolt';
 
 import {
   SLACK_HELP_SLASH_COMMAND_ARGUMENT,
@@ -8,8 +8,8 @@ import {
 } from '@utils/constants';
 import { triggerCreateTaskCommand, triggerHelpCommand, triggerTaskListingCommand, triggerUnknownCommand } from './commands';
 
-export const executeCommand = (command: string, payload: SlashCommand, client: App) => {
-  executionCommands[command](payload, client);
+export const executeCommand = async (command: string, payload: SlashCommand, client: App, ack: AckFn<string | RespondArguments>) => {
+  await executionCommands[command](client,ack, payload);
 };
 
 const executionCommands = {
