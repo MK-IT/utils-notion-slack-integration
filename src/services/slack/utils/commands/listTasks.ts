@@ -1,13 +1,8 @@
-import { AckFn, App, RespondArguments, SlashCommand } from '@slack/bolt';
+import { App, SlashCommand } from '@slack/bolt';
 
 import * as Notion from '@services/notion';
 import { getListTasksBlocks } from '@services/slack/views/listTasks';
-export const triggerTaskListingCommand = async (
-  client: App,
-  ack: AckFn<string | RespondArguments>,
-  payload: SlashCommand
-) => {
-  ack();
+export const triggerTaskListingCommand = async (client: App, payload: SlashCommand) => {
   const { user_id, channel_id } = payload;
   const {
     profile: { email }

@@ -9,7 +9,8 @@ import {
 import { triggerCreateTaskCommand, triggerHelpCommand, triggerTaskListingCommand, triggerUnknownCommand } from './commands';
 
 export const executeCommand = async (command: string, payload: SlashCommand, client: App, ack: AckFn<string | RespondArguments>) => {
-  await executionCommands[command](client,ack, payload);
+  ack();
+  await executionCommands[command](client, payload);
 };
 
 const executionCommands = {
