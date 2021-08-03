@@ -1,7 +1,6 @@
 import { DividerBlock, InputBlock, KnownBlock } from '@slack/bolt';
 
 import { DropdownValue } from 'src/interfaces/notionValues';
-import { formatDate } from './date';
 import { mapDropdownValuesToBlockOptions } from './mappings';
 
 export enum SelectType {
@@ -105,15 +104,13 @@ export const generateDividerBlock = (): DividerBlock => ({
   type: 'divider'
 });
 
-export const generateDatePickerBlock = (label: string, placeholder: string): KnownBlock => {
+export const generateDatePickerBlock = (label: string, placeholder: string,initialDate: string = null, optional:boolean = false): KnownBlock => {
   const id = label.toLowerCase();
-  const today = new Date();
-  const initialDate = formatDate(today);
-  return {
+  const block: KnownBlock = {
     type: 'input',
+    optional,
     element: {
       type: 'datepicker',
-      initial_date: initialDate,
       placeholder: {
         type: 'plain_text',
         text: placeholder,
@@ -128,4 +125,10 @@ export const generateDatePickerBlock = (label: string, placeholder: string): Kno
       emoji: true
     }
   };
+
+  if(initialDate){
+    block.element['initial_date'] = initialDate
+  }
+
+  return block;
 };

@@ -8,8 +8,11 @@ import {
   generateUserSelectBlock
 } from './';
 import { DropdownValues } from '@interfaces/notionValues';
+import { formatDate } from './date';
 
 export const getCreateTaskBlocks = ({type, status, priority, estimate}: DropdownValues, initialUserId: string) => {
+  const today = new Date();
+  const initialDate = formatDate(today);
   const blocks: KnownBlock[] = [
     generateUserSelectBlock('Accountable', 'please select accountable', initialUserId),
     generateDividerBlock(),
@@ -27,9 +30,9 @@ export const getCreateTaskBlocks = ({type, status, priority, estimate}: Dropdown
     generateDividerBlock(),
     generateSelectBlock('Estimate', 'please select story points', estimate),
     generateDividerBlock(),
-    generateDatePickerBlock('Start', 'please select start date'),
+    generateDatePickerBlock('Start', 'please select start date', initialDate),
     generateDividerBlock(),
-    generateDatePickerBlock('End', 'please select end date')
+    generateDatePickerBlock('End', 'please select end date',null, true)
   ];
   return blocks;
 }
