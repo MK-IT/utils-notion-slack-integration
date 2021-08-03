@@ -4,6 +4,7 @@ import {
   SelectOptionWithId,
   SelectProperty
 } from '@notionhq/client/build/src/api-types';
+
 import {
   DATABASE_PROPERTY_ESTIMATE,
   DATABASE_PROPERTY_PRIORITY,
@@ -16,7 +17,7 @@ import { Task } from '@interfaces/tasks';
 
 // TODO: fix any type
 export const mapNotionPageToTask = (page: any): Task => {
-  const { Projects, Timeline } = page.properties;
+  const {Projects, Timeline} = page.properties;
   const taskName = Projects.title[0].plain_text;
   const taskDueDate = new Date((Timeline as DatePropertyValue)?.date?.end);
   const task: Task = {
