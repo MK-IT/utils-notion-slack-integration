@@ -13,4 +13,3 @@ export const SLACK_NEW_TASK_SLASH_COMMAND_ARGUMENT = 'new';
 export const SLACK_LIST_TASKS_SLASH_COMMAND_ARGUMENT = 'tasks';
 export const SLACK_HELP_SLASH_COMMAND_ARGUMENT = 'help';
 export const SLACK_UNKNOWN_SLASH_COMMAND_ARGUMENT = 'unknown';
-

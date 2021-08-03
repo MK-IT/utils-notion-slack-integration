@@ -1,7 +1,7 @@
 import { App, ViewSubmitAction } from '@slack/bolt';
 
 export const configureModalSubmissions = (client: App) => {
-  client.view<ViewSubmitAction>({ callback_id: 'submit-form' }, async ({ ack, payload }) => {
+  client.view<ViewSubmitAction>({ callback_id: 'submit-form' }, async ({ ack /* , payload */ }) => {
     ack();
     // TODO: check if timeline start date is less than today and send error msg
     // TODO: check if timeline end date is less than start date and send error msg

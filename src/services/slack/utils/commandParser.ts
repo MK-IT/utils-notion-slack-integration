@@ -1,5 +1,3 @@
-import { slackCommands } from "./constants"
+import { slackCommands } from './constants';
 
-export const parseCommand = (command: string) => {
-  return slackCommands[command] ?? slackCommands.unknown
-}
+export const parseCommand = (command: string) => slackCommands[command] ?? slackCommands.unknown;
