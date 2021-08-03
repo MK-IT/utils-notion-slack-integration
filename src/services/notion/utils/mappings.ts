@@ -50,6 +50,6 @@ export const mapNotionPropertiesToSlackViewValues = (properties: any): DropdownV
       }
     };
   });
-  const result: DropdownValues = mappedValues;
+  const result: DropdownValues = Object.assign({}, ...mappedValues);
   return result;
 };
