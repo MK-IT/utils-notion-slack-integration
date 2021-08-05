@@ -1,0 +1,41 @@
+_metadata:
+  major_version: 1
+  minor_version: 1
+display_information:
+  name: MK IT Notion-Slack
+features:
+  bot_user:
+    display_name: Alfonso
+    always_online: true
+  slash_commands:
+    - command: /notion
+      url: <INSERT-YOUR-BACKEND-URL-HERE>/slack/events
+      description: task manager
+      usage_hint: new | list | help
+      should_escape: false
+oauth_config:
+  scopes:
+    user:
+      - users.profile:read
+    bot:
+      - channels:read
+      - chat:write
+      - commands
+      - groups:read
+      - im:history
+      - im:read
+      - im:write
+      - reactions:read
+      - reactions:write
+      - team:read
+      - users.profile:read
+      - users:read
+      - users:read.email
+      - users:write
+settings:
+  interactivity:
+    is_enabled: true
+    request_url: <INSERT-YOUR-BACKEND-INTERACTIVITY-URL-HERE>/slack/events
+  org_deploy_enabled: true
+  socket_mode_enabled: false
+  token_rotation_enabled: false

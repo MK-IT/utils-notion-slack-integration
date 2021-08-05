@@ -34,8 +34,8 @@ const createTaskViewBlocks = (
   return blocks;
 };
 
-export const createTaskView = (dropDownValues: DropdownValues, initialUserId: string): View => {
-  const blocks = createTaskViewBlocks(dropDownValues, initialUserId);
+export const createTaskView = (dropdownValues: DropdownValues, initialUserId: string): View => {
+  const blocks = createTaskViewBlocks(dropdownValues, initialUserId);
   return {
     callback_id: 'submit-form',
     type: 'modal',

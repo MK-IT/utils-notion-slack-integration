@@ -1,6 +1,7 @@
 import { App, LogLevel } from '@slack/bolt';
 
-import { configureCommands } from './config/configureCommands';
+import { configureCommands } from './commander';
+import { createTaskAction } from './actions';
 
 const slack = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -9,6 +10,7 @@ const slack = new App({
 });
 
 export const start = async () => {
+  createTaskAction(slack);
   await configureCommands(slack);
   slack.start(+process.env.APP_PORT);
 };
