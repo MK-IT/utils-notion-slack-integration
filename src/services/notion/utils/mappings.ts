@@ -4,6 +4,7 @@ import {
   SelectOptionWithId,
   SelectProperty
 } from '@notionhq/client/build/src/api-types';
+
 import {
   DATABASE_PROPERTY_ESTIMATE,
   DATABASE_PROPERTY_PRIORITY,
@@ -11,7 +12,7 @@ import {
   DATABASE_PROPERTY_STATUS,
   DATABASE_PROPERTY_TYPE
 } from '@utils/constants';
-import { DropdownValues, InnerValue } from '@interfaces/notionValues';
+import { DropdownValues } from '@interfaces/notionValues';
 import { Task } from '@interfaces/tasks';
 
 // TODO: fix any type
@@ -39,13 +40,13 @@ export const mapNotionPropertiesToSlackViewValues = (properties: {
   ];
   const mappedValues = databaseColumnNames.reduce((values, column: string) => {
     const property = properties[column] as SelectProperty;
-    const allColumnValues: InnerValue[] = (property.select.options as SelectOptionWithId[]).map(
-      ({ id, name }) => ({
-        id,
-        text: name
-      })
-    );
-    const columnDefaultValue: InnerValue = allColumnValues.find(
+    const allColumnValues: { id: string; text: string }[] = (
+      property.select.options as SelectOptionWithId[]
+    ).map(({ id, name }) => ({
+      id,
+      text: name
+    }));
+    const columnDefaultValue: { id: string; text: string } = allColumnValues.find(
       p => p.id === process.env[`NOTION_DEFAULT_${column.toUpperCase()}_ID`]
     );
     const columnName = column.toLowerCase();

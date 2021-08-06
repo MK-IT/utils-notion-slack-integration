@@ -1,11 +1,6 @@
-export interface InnerValue {
-  text: string;
-  id: string;
-}
-
 export interface DropdownValue {
-  values: InnerValue[];
-  defaultValue: InnerValue;
+  values: { text: string; id: string }[];
+  defaultValue: { text: string; id: string };
 }
 
 export interface DropdownValues {

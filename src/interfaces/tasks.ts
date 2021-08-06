@@ -8,6 +8,7 @@ export interface Task {
 
 export interface CreateTaskParams {
   title: string;
+  description: string;
   type: string; // type id
   sprint: string; // sprint id
   status: string; // status id
