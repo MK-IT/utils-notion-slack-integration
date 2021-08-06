@@ -1,8 +1,8 @@
 import { KnownBlock, Option } from '@slack/bolt';
 
-import { DropdownValue, InnerValue } from '@interfaces/notionValues';
+import { DropdownValue } from '@interfaces/notionValues';
 
-const mapSelectValues = (values: InnerValue[]): Option[] =>
+const mapSelectValues = (values: { id: string; text: string }[]): Option[] =>
   values.map(value => ({
     text: {
       type: 'plain_text',
