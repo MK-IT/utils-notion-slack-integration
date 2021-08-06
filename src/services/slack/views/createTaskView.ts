@@ -5,7 +5,7 @@ import { formatDate } from '@utils/date';
 import { datepickerBlock, dividerBlock, inputBlock, selectBlock, userBlock } from '../blocks';
 
 const createTaskViewBlocks = (
-  { type, status, priority, estimate }: DropdownValues,
+  { type, status, priority, estimate, sprint }: DropdownValues,
   initialUserId: string
 ) => {
   const today = new Date();
@@ -29,7 +29,9 @@ const createTaskViewBlocks = (
     dividerBlock(),
     datepickerBlock('Start', 'please select start date', initialDate),
     dividerBlock(),
-    datepickerBlock('End', 'please select end date', null, true)
+    datepickerBlock('End', 'please select end date', null, true),
+    selectBlock('Sprint', 'Please select a sprint', sprint),
+    dividerBlock()
   ];
   return blocks;
 };
