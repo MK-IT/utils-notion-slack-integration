@@ -1,8 +1,8 @@
 import { App, ViewStateValue, ViewSubmitAction } from '@slack/bolt';
+import { User } from '@notionhq/client/build/src/api-types';
 
 import * as Notion from '@services/notion';
 import { CreateTaskParams } from '@interfaces/tasks';
-import { User } from '@notionhq/client/build/src/api-types';
 
 const mapCreateTaskSubmitValuesToParams = (
   values: {
