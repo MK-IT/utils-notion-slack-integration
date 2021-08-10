@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-const config = {
+module.exports = {
   entry: './src/index.ts',
   devtool: 'inline-source-map',
   target: 'node',
@@ -26,5 +26,3 @@ const config = {
     path: path.resolve(__dirname, 'dist')
   }
 };
-
-export default config;

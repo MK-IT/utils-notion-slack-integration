@@ -6,4 +6,4 @@ dist
 coverage
 # don't lint ESLint config and Webpack config due to TypeScript ESLint bug; see https://github.com/typescript-eslint/typescript-eslint/issues/1723
 .eslintrc.js
-webpack.config.ts
+webpack.config.js
