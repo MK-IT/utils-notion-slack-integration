@@ -13,9 +13,8 @@
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "develop": "webpack --watch",
-    "start": "ts-node ./src/index.ts",
-    "build": "tsc",
-    "webpack": "npx webpack",
+    "start": "node ./dist/bundle.js",
+    "build": "webpack",
     "prepare": "husky install"
   },
   "dependencies": {
