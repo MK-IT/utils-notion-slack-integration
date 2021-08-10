@@ -26,5 +26,6 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins: [new NodemonPlugin()]
+  plugins: [new NodemonPlugin()],
+  stats: 'errors-warnings'
 };
