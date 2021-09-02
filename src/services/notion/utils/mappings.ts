@@ -7,17 +7,15 @@ import {
 import {
   DATABASE_PROPERTY_ESTIMATE,
   DATABASE_PROPERTY_PRIORITY,
-  DATABASE_PROPERTY_SPRINT,
-  DATABASE_PROPERTY_STATUS,
-  DATABASE_PROPERTY_TYPE
+  DATABASE_PROPERTY_STATUS
 } from '@utils/constants';
 import { DropdownValues, InnerValue } from '@interfaces/notionValues';
 import { Task } from '@interfaces/tasks';
 
 // TODO: fix any type
 export const mapNotionPageToTask = (page: any): Task => {
-  const { Projects, Timeline } = page.properties;
-  const taskName = Projects.title[0].plain_text;
+  const { Title, Timeline } = page.properties;
+  const taskName = Title?.title[0].plain_text;
   const taskDueDate = new Date((Timeline as DatePropertyValue)?.date?.end);
   const task: Task = {
     name: taskName,
