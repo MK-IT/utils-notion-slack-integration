@@ -32,10 +32,8 @@ export const mapNotionPropertiesToSlackViewValues = (properties: {
 }): DropdownValues => {
   const databaseColumnNames = [
     DATABASE_PROPERTY_STATUS,
-    DATABASE_PROPERTY_TYPE,
     DATABASE_PROPERTY_PRIORITY,
-    DATABASE_PROPERTY_ESTIMATE,
-    DATABASE_PROPERTY_SPRINT
+    DATABASE_PROPERTY_ESTIMATE
   ];
   const mappedValues = databaseColumnNames.reduce((values, column: string) => {
     const property = properties[column] as SelectProperty;
@@ -52,7 +50,7 @@ export const mapNotionPropertiesToSlackViewValues = (properties: {
     const result = {
       [columnName]: {
         values: allColumnValues,
-        defaultValue: columnDefaultValue ?? allColumnValues[allColumnValues.length - 1]
+        defaultValue: columnDefaultValue
       }
     };
     return { ...values, ...result };

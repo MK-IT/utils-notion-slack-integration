@@ -4,12 +4,10 @@ import { CreateTaskParams } from '@interfaces/tasks';
 
 export const getNotionCreateTaskPageParams = ({
   title,
-  type,
   status,
   priority,
   estimate,
   timeline,
-  sprint,
   accountable,
   reviewer
 }: CreateTaskParams): PagesCreateParameters => ({
@@ -43,12 +41,6 @@ export const getNotionCreateTaskPageParams = ({
         id: priority
       }
     },
-    Sprint: {
-      type: 'select',
-      select: {
-        id: sprint
-      }
-    },
     Status: {
       type: 'select',
       select: {
@@ -64,12 +56,6 @@ export const getNotionCreateTaskPageParams = ({
     Timeline: {
       type: 'date',
       date: timeline
-    },
-    Type: {
-      type: 'select',
-      select: {
-        id: type
-      }
     }
   }
 });
