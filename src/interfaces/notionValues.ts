@@ -11,7 +11,5 @@ export interface DropdownValue {
 export interface DropdownValues {
   status: DropdownValue;
   estimate: DropdownValue;
-  type: DropdownValue;
   priority: DropdownValue;
-  sprint: DropdownValue;
 }
